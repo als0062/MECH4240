@@ -1,0 +1,6 @@
+THings to work on:
+	How do we capture errors?
+	Can we determine type of error thrown?
+	How to make custom errors to throw?
+	How do we raise errors to the mainFunction.py?
+	

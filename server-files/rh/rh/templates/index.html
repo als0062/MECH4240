@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% set active_page = "index" %}
+
+{% block content %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Summary Reports<button type="button" class="heading-button-right pull-right btn btn-default btn-sm glyphicon glyphicon-wrench"></button></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Zones</th>
+                    <th>Pressure</th>
+                    <th>Temperature</th>
+                    <th>AHU</th>
+                    <th>Rooms</th>
+                </tr>                    
+            </thead>
+            <tbody data-bind="foreach: summaries">
+                <tr>
+                    <td data-bind="text: zone">####</td>
+                    <td data-bind="text: pressure">####</td>
+                    <td data-bind="text: temperature">####</td>
+                    <td data-bind="text: AHU">####</td>
+                    <td data-bind="text: room">####</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Scheduled Maintenance <button type="button" class="heading-button-right pull-right btn btn-default btn-sm glyphicon glyphicon-calendar"></button><button type="button" class="heading-button pull-right btn btn-default btn-sm glyphicon glyphicon-plus"></button></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Check</th>
+                    <th>Test Date</th>
+                    <th>Days to Go</th>
+                </tr>                    
+            </thead>
+            <tbody data-bind="foreach: maintenanceChecks">
+                <tr>
+                    <td data-bind="text: target">####</td>
+                    <td data-bind="text: date">####</td>
+                    <td data-bind="text: days">####</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Recent Alerts<button type="button" class="heading-button-right pull-right btn btn-default btn-sm glyphicon glyphicon-wrench"></button></div>
+        <div class="panel-body">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Critical Alert!</strong> <p>Outside air damper error at AUH-ER1 <span class="pull-right">Thursday 4-11-2014 at 7:44:57 PM</span></p>
+            </div>
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Warning!</strong> <p>High humidity at AUH-ER1 <span class="pull-right"> Friday 4-10-2014 at 2:40:53 PM</span></p>
+            </div>
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Completed!</strong> <p>Maintenance check for AUH-ER1 <span class="pull-right">Thursday 4-9-2014 at 5:15:13 PM</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}

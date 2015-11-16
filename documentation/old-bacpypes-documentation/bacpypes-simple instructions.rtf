@@ -1,0 +1,68 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1326\cocoasubrtf110
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red246\green246\blue246;}
+\margl1440\margr1440\vieww14400\viewh12860\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs26 \cf0 \ul \ulc0 BACpypes Basic Setup and Functions\
+
+\b0\fs24 \ulnone \
+BACnet Stacks Sourceforge: {\field{\*\fldinst{HYPERLINK "http://bacnet.sourceforge.net/"}}{\fldrslt http://bacnet.sourceforge.net/}}\
+BACpypes Sourceforge: {\field{\*\fldinst{HYPERLINK "http://bacpypes.sourceforge.net/"}}{\fldrslt http://bacpypes.sourceforge.net/}}\
+	For properly setting up BACpypes on your linux computer, see the getting started tab on BACpypes Sourceforge website. 
+\b\fs26 \ul \
+
+\b0\fs24 \ulnone \
+BACpypes is BACnet protocol stack library that provides a BACnet application layer and network layer communication services. On a basic level it is an application to send data to and from different BACnet devices. BACpypes is written in the Python language and can be used through Python programs or Terminal. \
+\
+The basic functions needed from BACpypes are to check connectivity to the connecting device, reading values from the controller, and writing values to the controller. Below are tutorials for how to correctly use the sample files to get the basic functionality from BACpypes.\
+\
+\ul WhoIsIAm.py\ulnone \
+Checking for the connected devices is done or based off the sample python file WhoIsIAm.py. The file can be found in the path BACpypes/Samples. When the file is ran in the terminal the \'93>\'94 should appear. Typing in \'93help\'94 will give you list of possible commands and return:\
+\
+\pard\pardeftab720\sl300
+
+\f1\fs22 \cf0 \cb2 > help\
+\
+Documented commands (type help <topic>):\
+========================================\
+EOF  buggers  bugin  bugout  exit  gc  help  iam  shell  whois\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \cb1 \
+To check for connection  type in who is into the terminal. To see if the device responded to the whois command open up wire shark and look through the captures packets for an iam packet. A complete tutorial for doing this can be found at {\field{\*\fldinst{HYPERLINK "http://bacpypes.sourceforge.net/gettingstarted/gettingstarted001.html"}}{\fldrslt http://bacpypes.sourceforge.net/gettingstarted/gettingstarted001.html}}. \
+\
+\ul ReadWriteProperty.py\
+\ulnone The ReadWriteProperty file, like the WhoIsIAm.py is found in the sample folder in BACpypes.\
+To read a value the command line should be formatted as such, which indx being optional:\
+NOTE: The input is divided by spaces so there should be no quotes around strings or commas to separate arguments\
+\
+read <addr> <type> <inst> <prop> [ <indx> ]\
+read: tells the program you want read a value\
+addr: is the IP address of the device you want to read from\
+type: this is what the port is configured to be. i.e. analogInput \
+inst: is the port on the device you wish to read from\
+prop: for almost all cases this will be presentValue, which tells it you want the current value\
+\
+example read command\
+read 192.168.92.68 analogInput 1 presentValue\
+\
+	this tells the program you want to read the current value from a device with an IP address of 192.168.92.68. The port where the sensor is located is port one and it is an analog input, which for most cases the type will be analogInput.\
+\
+To write a value the command line should be formatted as such:\
+write <addr> <type> <inst> <prop> <value> [ <indx> ] [ <priority> ]\
+write: tells the program you want to write a value\
+addr: is the IP address of the device you want to write to\
+type: the type is what the port you want to write to is configured to be. i.e. analogOutput\
+inst: this is the port on the device you wish to write to\
+prop: or almost all cases this will be presentValue, which tells it you want to write the current value\
+value: the value you want to write to the device\
+indx: this is optional, but to use the priority this must also be used. 0 can be used without effecting the data\
+priority: when there are multiple request BACpypes will create a queue. The priority features will allow some request to take priority over lower priority valued request. For some reason this value is necessary to make the device accept the write command. Using 1 for this will make the device accept the write and will give the request the highest priority\
+\
+example write command\
+write 192.168.92.68 analogOutput 1 presentValue 3 0 1\
+\
+	this tells the program you want to write a current value to a device with an IP address of 192.168.92.68. The port that the LED, actuator, ect. is located is port one and it is an analog output, for most cases the type will be analogOutput. The priority is 1 and the value is 3. To BACpypes it doesn\'92t matter if you writing a value in milliamps, volts, or whatever. All it cares about is the number you writing to it. Because of this you must configure the port on the device first to be the analog output type of your choosing, before using the BACpypes write command.\
+\
+}
