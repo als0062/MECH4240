@@ -12,7 +12,7 @@ foreignTTL: 30
 [Ports]
 portOne: led
 portTwo: led
-portThree: led
-portFour: led
+portThree: None
+portFour: None
 portFive: thermistorcc
 portSix: None

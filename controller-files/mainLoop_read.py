@@ -35,7 +35,7 @@ for x in range(0,2):
 			numberOfConnectedPorts = len(device.getPort())+1
 			print "numberOfConnectedPorts: " + str(numberOfConnectedPorts)
 			readDic = {}
-			manipulatedDic = {}
+			# manipulatedDic = {}
 			# print "Preparing to read ports..."
 			# getting error somewhere below
 			for item in range(1,numberOfConnectedPorts):

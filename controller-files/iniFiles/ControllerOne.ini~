@@ -14,5 +14,5 @@ portOne: thermistorcc
 portTwo: thermistorcc
 portThree: thermistorcc
 portFour: thermistorcc
-portFive: led
+portFive: None
 portSix: None
