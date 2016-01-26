@@ -1,0 +1,25 @@
+Using git on Ubuntu:
+
+change the current drive to the git repository file:
+cd Russel-Hospital-Senior-Design
+
+To update foleder to what is on the master branch:
+	git pull
+
+check the status of repository for changes:
+	git status
+
+to add a folder/file to be commited:
+	git add *path* (to add a whole folder: folder name/*)
+
+to commit your changes to the repository:
+	git commit
+	*Type message on what your changes are*
+	ctrl + X
+	Y
+	press enter
+
+After commiting changes:
+	git push
+	*enter user name and password when prompted*
+	

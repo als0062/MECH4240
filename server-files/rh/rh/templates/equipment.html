@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% set active_page = "equipment" %}
+
+{% block content %}
+<ul id="tabs" class="nav nav-tabs" role="tablist">
+  <li class="active"><a href="#devices" role="tab" data-toggle="tab">Devices</a></li>
+  <li><a href="#trending" role="tab" data-toggle="tab">Trending</a></li>
+  <li><a href="#add_device" role="tab" data-toggle="tab">Add Device</a></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane active" id="devices">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Device Name</th>
+                    <th>IP Address</th>
+                </tr>                    
+            </thead>
+            <tbody data-bind="foreach: devices">
+                <tr>
+                    <td data-bind="text: name">##</td>
+                    <td data-bind="text: ip_address">##</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+	<div class="tab-pane" id="trending">
+		<h1>Controllers</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Port 1</th>
+                    <th>Port 2</th>
+                    <th>Port 3</th>
+                    <th>Timestamp</th>
+                </tr>                    
+            </thead>
+            <tbody data-bind="foreach: trends">
+                <tr>
+                    <td data-bind="text: name">##</td>
+                    <td data-bind="text: value1">##</td>
+                    <td data-bind="text: value2">##</td>
+                    <td data-bind="text: value3">##</td>
+                    <td data-bind="text: timestamp">##</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+	<div class="tab-pane" id="add_device">
+	    <form data-bind="submit: displayPortForms" class="panel panel-default">
+	    	<div class="panel-heading">Device Details<button type="submit" class="heading-button-right pull-right btn btn-default btn-sm">Submit</button></div>
+	        <table class="table">
+	            <thead>
+	                <tr>
+	                    <th>Device Name</th>
+	                    <th>IP Address</th>
+	                    <th>MAC Address</th>
+	                    <th>INI Filename</th>
+	                    <th>I/O Ports</th>
+	                </tr>                    
+	            </thead>
+	            <tbody>
+	                <tr>
+	                    <td><input data-bind="value: device_name" placeholder="Name your device..."></input></td>
+	                    <td><input data-bind="value: ip_address" placeholder="000.000.00.00"></input></td>
+	                    <td><input data-bind="value: mac_address" placeholder="000.000.00.00"></input></td>
+	                    <td><input data-bind="value: ini_name" placeholder="Name of INI File"></input></td>
+	                    <td>
+	                    	<select data-bind="options: io_ports, value: numPortsSelected"></select>
+	                	</td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </form>
+	    <form class="panel panel-default" data-bind="submit: submitFormData">
+	    	<div class="panel-heading">I/O Port Details<button id="submit-ports" type="submit" class="disabled heading-button-right pull-right btn btn-default btn-sm">Submit</button></div>
+	    	<table class="table">
+		    	<thead>
+		    		<tr>
+		    			<th>Port Number</th>
+		    			<th>Input/Output</th>
+		    			<th>Category</th>
+		    			<th>Type</th>
+		    		</tr>
+		    	</thead>
+		    	<tbody data-bind="foreach: portForms">
+		    		<tr>
+		    			<td data-bind="text: number"></td>
+	                    <td>
+	                    	<select data-bind="options: input_output, value: inputOutputSelected"></select>
+	                	</td>
+	                    <td>
+	                    	<select data-bind="options: input_categories, value: ioTypeSelected"></select>
+	                	</td>
+	                    <td>
+	                    	<select data-bind="options: input_types, value: ioTypeSelected"></select>
+	                	</td>
+		    		</tr>
+		    	</tbody>
+	    	</table>
+	    </form>
+	</div>
+</div>
+<script src="{{ url_for('static', filename='equipment.js') }}"></script>
+{% endblock %}
