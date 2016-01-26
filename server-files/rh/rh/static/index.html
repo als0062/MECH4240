@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Russell Hospital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="override.css">
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
+</head>
+<body>
+    <div class="page-header">
+        <h1>Russell <span class="orange-text">Hospital</span><span class="pull-right" data-bind="text: clock().time">10:00 PM</span></h1> 
+    </div>
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+                <li><a href="equipment.html">Equipment</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="pull-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown"> User <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a>Sign In</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="main" class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Summary Reports<button type="button" class="pull-right btn btn-default btn-sm glyphicon glyphicon-wrench"></button></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Zones</th>
+                        <th>Pressure</th>
+                        <th>Temperature</th>
+                        <th>AHU</th>
+                        <th>Rooms</th>
+                    </tr>                    
+                </thead>
+                <tbody data-bind="foreach: summaries">
+                    <tr>
+                        <td data-bind="text: zone">####</td>
+                        <td data-bind="text: pressure">####</td>
+                        <td data-bind="text: temperature">####</td>
+                        <td data-bind="text: AHU">####</td>
+                        <td data-bind="text: room">####</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Scheduled Maintenance <button type="button" class="pull-right btn btn-default btn-sm glyphicon glyphicon-calendar"></button><button type="button" class="pull-right btn btn-default btn-sm glyphicon glyphicon-plus"></button></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Check</th>
+                        <th>Test Date</th>
+                        <th>Days to Go</th>
+                    </tr>                    
+                </thead>
+                <tbody data-bind="foreach: maintenanceChecks">
+                    <tr>
+                        <td data-bind="text: target">####</td>
+                        <td data-bind="text: date">####</td>
+                        <td data-bind="text: days">####</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+       <div class="panel panel-default">
+            <div class="panel-heading">Recent Alerts<button type="button" class="pull-right btn btn-default btn-sm glyphicon glyphicon-wrench"></button></div>
+            <div class="panel-body">
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Critical Alert!</strong> <p>Outside air damper error at AUH-ER1 <span class="pull-right">Thursday 4-11-2014 at 7:44:57 PM</span></p>
+                </div>
+                <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Warning!</strong> <p>High humidity at AUH-ER1 <span class="pull-right"> Friday 4-10-2014 at 2:40:53 PM</span></p>
+                </div>
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>Completed!</strong> <p>Maintenance check for AUH-ER1 <span class="pull-right">Thursday 4-9-2014 at 5:15:13 PM</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

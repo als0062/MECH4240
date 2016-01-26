@@ -1,0 +1,18 @@
+[BACpypes]
+objectName: ControllerTwo
+address: 192.178.92.79
+objectIdentifier: 2445
+maxApduLengthAccepted: 1024
+segmentationSupported: segmentedBoth
+vendorIdentifier: 245
+foreignPort: 0
+foreignBBMD: 0.0.0.0
+foreignTTL: 30
+
+[Ports]
+portOne: led
+portTwo: led
+portThree: None
+portFour: None
+portFive: thermistorcc
+portSix: None
