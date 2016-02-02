@@ -97,6 +97,8 @@ for x in range(0,2):
 			#	print portobj
 			#	write(i, device, portobj, 0)
 			#	print "C1 write attempted"
+
+			
 			if i == 1:
 				print "Writing to C2 ports"
 				portobj = device.getPortItem(6)
