@@ -57,6 +57,8 @@ def instantiatePortClass(str_className,portNum):
         return TempSA(portNum, 1)
     elif str_className.lower() == "thermistorhc":
         return TempPA(portNum, 3)
+    #elif str_className.lower() == "modeswap":
+    #    return ModeSwap(portNum, )
     else:
         return "Error: Type not recognised"
     

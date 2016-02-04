@@ -101,6 +101,23 @@ class ControlLoop(object):
 #add deadband field
 
 
+class ModeSwap(DigitalOutput):
+    def __init__(self, port):
+        AnalogInput.__init__(self)
+        self._portNum = port
+        self._controlled = False
+        self._name = "ModeSwap"
+    def getPortName(self):
+        return self._name
+    def getControlled(self):
+        return self._controlled
+    def getPortNum(self):
+        return self._portNum
+    def setPortNum(self, port):
+        self._portNum = port
+
+
+
 class TempMA(AnalogInput,ControlLoop):
    #Mix Air Temperature sensor can controll dampers 
     def __init__(self, port):
@@ -952,9 +969,9 @@ class Device(object):
             return self._ports["portseven"]
         # Virtual Ports
         elif portNumber == 810001:
-            return self._ports["virtualport"]
+            return self._ports["virtualport1"]
         elif portNumber == 840001:
-            return self._ports["virtualport"]
+            return self._ports["virtualport4"]
         else:
             return "Error: Port unknown"
     def setObjectName(self, name):   
