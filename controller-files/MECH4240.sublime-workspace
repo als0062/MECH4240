@@ -1,0 +1,298 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"damper",
+				"damperPositionRA"
+			],
+			[
+				"queue",
+				"queue_size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "contRead.py",
+			"settings":
+			{
+				"buffer_size": 2984,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/amos/Desktop/The-Unicorn-Code",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files"
+	],
+	"file_history":
+	[
+		"/home/amos/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/contRead.py",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/dummyDatabase.py",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/createDeviceChain.py",
+		"/home/amos/bacpypes/bacpypes/apdu.py",
+		"/home/amos/bacpypes/setup.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/createDeviceChain.py",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/dummyDatabase.py",
+		"/home/amos/bacpypes/samples/BACpypes.ini",
+		"/home/amos/MECH4240/russellhos/bacpypes/samples/BACpypes.ini",
+		"/home/amos/bacpypes/samples/BACpypes",
+		"/home/amos/bacpypes/samples/BACpypes.I",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py",
+		"/home/amos/MECH4240/russellhos/Russel-Hospital-Senior-Design/controller-files/readWrite.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtnode.py",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtnode.py",
+		"/home/amos/MECH4240/pyexample.py",
+		"/home/amos/MECH4240/russellhos/Russel-Hospital-Senior-Design/controller-files/iniFiles/ControllerOne.ini",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/readWrite.py",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/iniFiles/ControllerOne.ini",
+		"/home/amos/devel/fhwa3-ros-pkg/fhwa3_launch/launch/fhwa3_xsens_foot.launch",
+		"/home/amos/devel/fhwa3_ws2/src/fhwa3-ros-pkg/fhwa3_launch/launch/xsens_foot.launch",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py",
+		"/home/amos/.config/ReText project/markdown_extensions.txt",
+		"/home/amos/.config/ReText project/ReText.conf",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtdef.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdef.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py.py",
+		"/home/amos/devel/xsens_ws/mtnode.py",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/README",
+		"/opt/ros/indigo/lib/xsens_driver/mtnode.py",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtnode.py",
+		"/media/amos/Storage/c2p59bcode",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtdevice.py",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtls",
+		"/home/amos/devel/fhwa3_ws/src/nodes/mtnode.py",
+		"/home/amos/devel/fhwa3_ws/nodes/mtnode.py"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"imu_pub",
+			"im_pub",
+			"mag_msg",
+			"pub_mag",
+			"pb_mag",
+			"gps_msg",
+			"Press",
+			"pressure_data",
+			"PVT",
+			"pvt_data",
+			"orientation data",
+			"orientation_data",
+			"orient",
+			"orient_data",
+			"mid",
+			"roll",
+			"pub_gps",
+			"**",
+			"*",
+			"**",
+			"accel_data",
+			"acceleration",
+			"RAWGPS",
+			"angular",
+			"angular_velocity",
+			"anglar_velocity",
+			"raw",
+			"gps_msg",
+			"pvt_data",
+			"gps_pub",
+			"fix",
+			"fix_ext",
+			"fix",
+			"read_meas",
+			"data.get",
+			"XDI",
+			"time",
+			"start",
+			"PVT",
+			"read_data_msg",
+			"MTData Message",
+			"XDI",
+			"waiting"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "contRead.py",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								480,
+								480
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "MECH4240.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

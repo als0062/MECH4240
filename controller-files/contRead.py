@@ -3,13 +3,13 @@ from createDeviceChain import createChain
 from sql_insert import insertNewRow
 import time, os, subprocess
 
-#CHANGES
+#Create device chain
 deviceChain = createChain()
 device = deviceChain
 #setpoint = 72
 
+#This loop iterates through each device and starts the an application for each device
 i = 0
-
 while device != None:
 	try:
 		if i < 2:
@@ -21,6 +21,7 @@ while device != None:
 		i += 1
 count = 0
 
+#This loop goes through each device and reads each port, writing port values to database
 while count < 100:
 	for x in range(0,2):
 		device = deviceChain
@@ -49,8 +50,8 @@ while count < 100:
 				#the actual key for the port.  
 				#dummyColList = ['tempOA', 'humidityOA' ,'coOA', 'coRA', 'tempRA', 'tempMA', 'tempSA', 'damperPositionRA']
 				dummyColListOne = ['tempOA','tempRA','tempMA','tempSA','valuePositionCW']
-				dummyColListTwo = ['damperPositionOA','damperPositionRA', 'fanSpeedOutput', 'fanSpeedFrequency', 'airFlowOA' ] 
-				#fanSpeedOutput and fanSpeedFrequency are dummy placeholders to hold an empty port
+				dummyColListTwo = ['damperPositionOA','damperPositionRA', 'tempMA', 'fanVoltage', 'airFlowOA'] 
+				#fanVoltage is a  dummy placeholder to hold an empty port
 				temp = {}
 				for j in range(0, len(readDic)):
 					if i == 0:
@@ -88,6 +89,7 @@ while count < 100:
 	count += 1
 
 print "Stopping applications..."
+#This loop iterates through each device and stops its respective application
 i = 0
 device = deviceChain
 while device != None:

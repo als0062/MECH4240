@@ -100,6 +100,39 @@ class ControlLoop(object):
 #add name field
 #add deadband field
 
+###########################################################
+class DiagnosticSwitch(DigitalOutput):
+    def __init__(self,port):
+        DigitalOutput.__init__(self)
+        #ControlLoop.__init__(self)
+        self._portNum = port
+        #self._pValue = 2.3
+        #self._iValue = 4
+        #self._dValue = 3
+        #self._controlled = True
+        self._name = "DiagnosticSwitch"
+    def getPortName(self):
+        return self._name
+    #def getControlled(self):
+    #    return self._controlled
+    def getPortNum(self):
+        return self._portNum
+    def setPortNum(self, port):
+        self._portNum = port
+    #def getPValue(self):
+    #    return self._pValue
+    #def setPValue(self, pValue):
+    #    self._pValue = pValue
+    #def getIValue(self):
+    #    return self._iValue
+    #def setIValue(self, iValue):
+    #    self._iValue = iValue
+    # def getDValue(self):
+    #     return self._dValue
+    # def setDValue(self, dValue):
+    #     self._dValue = dValue
+
+################################################################
 
 class TempMA(AnalogInput,ControlLoop):
    #Mix Air Temperature sensor can controll dampers 
@@ -948,6 +981,8 @@ class Device(object):
             return self._ports["portsix"]
         elif portNumber == 7:
             return self._ports["portseven"]
+        elif portNumber == 810001:
+            return self._ports["virtualport"]
         else:
             return "Error: Port unknown"
     def setObjectName(self, name):   

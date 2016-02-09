@@ -56,6 +56,8 @@ def instantiatePortClass(str_className,portNum):
         return TempSA(portNum, 1)
     elif str_className.lower() == "thermistorhc":
         return TempPA(portNum, 3)
+    elif str_className.lower() == "diagnosticswitch":
+        return DiagnosticSwitch(portNum)
     else:
         return "Error: Type not reconised"
     
@@ -74,8 +76,11 @@ def portNumber(str_portNum):
     elif str_portNum.lower() == "portsix":
         return 6
     elif str_portNum.lower() == "portseven":
+        print "port 7 found"
         return 7
     elif str_portNum.lower() == "porteight":
         return 8
     elif str_portNum.lower() == "portnine":
         return 9
+    elif str_portNum.lower() == "virtualport":
+        return 810001

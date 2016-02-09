@@ -1,0 +1,502 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Digi",
+				"DigitalInput"
+			],
+			[
+				"damper",
+				"damperPositionRA"
+			],
+			[
+				"queue",
+				"queue_size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "controller-files/Class.py",
+			"settings":
+			{
+				"buffer_size": 29658,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controller-files/mainLoop.py",
+			"settings":
+			{
+				"buffer_size": 2468,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controller-files/contRead.py",
+			"settings":
+			{
+				"buffer_size": 3206,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "# This file creates a singly linked list of Device objects. Each device object holds all of the information that is needed for a single controller and a pointer to the next device object in the list. \n#The last item in the list holds a pointer to a null item to signify the end of the list.\n\n\nimport sys\nsys.path.append('../database/database')\nfrom iniParser import iniParser, CompIPToRequestIP, parsePorts\nfrom Class import *\nfrom sql_query import queryColumn \n\n\n\n#SUMMARY\ndef createChain():\n    # This retrives the name of all of the ini files that are listed in the database.\n    iniName = queryColumn('devices', \"ini\", 'sqlite:///../database/database/rh.db')\n\n    for index in range(0,len(iniName)):\n        portDic = None  #a dictionary of port objects\n        deviceDic = None #a dictionary of device objects\n        \n        #ADD A CHECK TO SEE IF FILE EXISTS\n    \n        #parses the ini file section, BACPYPES, to return a dictionary of controller properties\n        deviceDic = iniParser(\"iniFiles/\" + str(iniName[index]))\n        #adds the request IP to the dictionary (this is the device IP - 1)\n        deviceDic['requestip'] = CompIPToRequestIP(deviceDic['address'])\n        #parses the PORTS section of the ini file to return a dictionary of port properties\n        portDic = parsePorts(\"iniFiles/\" + str(iniName[index]))\n\n        #for each item in the ports dictionary, create a port object of that name and return it to a dictionary with the port number as the dictionary key\n        for port in portDic:\n            portDic[port] = instantiatePortClass(portDic[port], portNumber(port))\n        \n        #This if statement links the device objects into the linked list. I do not think the elif statement is nessacary but I did not want to remove it or change the cose befor the presentation.\n        if index == 0:\n            deviceList = Device(deviceDic, portDic)\n            counter = deviceList\n        elif index == 1:\n            temp = Device(deviceDic, portDic)\n            deviceList.addDevice(temp)\n            counter = counter.getNext()                     \n        else:\n            temp = Device(deviceDic, portDic)\n            counter.addDevice(temp)\n            counter = counter.getNext()\n\n    return deviceList\n\n\n#This method \ndef instantiatePortClass(str_className,portNum):\n    if str_className.lower() == \"led\":\n        return DamperPositionOA(portNum)\n    elif str_className.lower() == \"thermistorcc\":\n        return TempSA(portNum, 1)\n    elif str_className.lower() == \"thermistorhc\":\n        return TempPA(portNum, 3)\n    elif str_className.lower() == \"diagnosticswitch\":\n        return DiagnosticSwitch(portNum)\n    else:\n        return \"Error: Type not recognised\"\n    \n#   \ndef portNumber(str_portNum):\n    if str_portNum.lower() == \"portone\":\n        return 1\n    elif str_portNum.lower() == \"porttwo\":\n        return 2\n    elif str_portNum.lower() == \"portthree\":\n        return 3     \n    elif str_portNum.lower() == \"portfour\":\n        return 4    \n    elif str_portNum.lower() == \"portfive\":\n        return 5\n    elif str_portNum.lower() == \"portsix\":\n        return 6\n    elif str_portNum.lower() == \"portseven\":\n        return 7\n    elif str_portNum.lower() == \"porteight\":\n        return 8\n    elif str_portNum.lower() == \"portnine\":\n        return 9\n    elif str_portNum.lower() == \"virtualport\":\n        return 810001\n",
+			"file": "controller-files/createDeviceChain.py",
+			"file_size": 3405,
+			"file_write_time": 130934692533252405,
+			"settings":
+			{
+				"buffer_size": 3373,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controller-files/iniFiles/ControllerTwo.ini",
+			"settings":
+			{
+				"buffer_size": 332,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controller-files/readWrite.py",
+			"settings":
+			{
+				"buffer_size": 5888,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/amos/Desktop/The-Unicorn-Code",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/iniFiles",
+		"/home/amos/Desktop/The-Unicorn-Code/database"
+	],
+	"file_history":
+	[
+		"/home/amos/Desktop/pi/Desktop/liveCircles.py",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/iniFiles/ControllerOne.ini",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/iniFiles/ControllerTwo.ini",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/iniFiles/ControllerThree.ini",
+		"/home/amos/Desktop/The-Unicorn-Code/database/database/sql_declarative.py",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/readWrite.py",
+		"/home/amos/Desktop/The-Unicorn-Code/controller-files/contRead.py",
+		"/home/amos/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/dummyDatabase.py",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/createDeviceChain.py",
+		"/home/amos/bacpypes/bacpypes/apdu.py",
+		"/home/amos/bacpypes/setup.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/createDeviceChain.py",
+		"/home/amos/MECH4240/old/russellhos/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/bacpypes/Russel-Hospital-Senior-Design/controller-files/dummyDatabase.py",
+		"/home/amos/bacpypes/samples/BACpypes.ini",
+		"/home/amos/MECH4240/russellhos/bacpypes/samples/BACpypes.ini",
+		"/home/amos/bacpypes/samples/BACpypes",
+		"/home/amos/bacpypes/samples/BACpypes.I",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py",
+		"/home/amos/MECH4240/russellhos/Russel-Hospital-Senior-Design/controller-files/readWrite.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtnode.py",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtnode.py",
+		"/home/amos/MECH4240/pyexample.py",
+		"/home/amos/MECH4240/russellhos/Russel-Hospital-Senior-Design/controller-files/iniFiles/ControllerOne.ini",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/mainLoop.py",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/readWrite.py",
+		"/home/amos/Desktop/russellhos/Russel-Hospital-Senior-Design/controller-files/iniFiles/ControllerOne.ini",
+		"/home/amos/devel/fhwa3-ros-pkg/fhwa3_launch/launch/fhwa3_xsens_foot.launch",
+		"/home/amos/devel/fhwa3_ws2/src/fhwa3-ros-pkg/fhwa3_launch/launch/xsens_foot.launch",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py",
+		"/home/amos/.config/ReText project/markdown_extensions.txt",
+		"/home/amos/.config/ReText project/ReText.conf",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/nodes/mtdef.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdef.py",
+		"/home/amos/devel/old_xsens_ws/src/ethzasl_xsens_driver/nodes/mtdevice.py.py",
+		"/home/amos/devel/xsens_ws/mtnode.py",
+		"/home/amos/devel/xsens_ws/src/ethzasl_xsens_driver/README",
+		"/opt/ros/indigo/lib/xsens_driver/mtnode.py",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtnode.py",
+		"/media/amos/Storage/c2p59bcode",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtdevice.py",
+		"/home/amos/devel/fhwa3_ws/src/xsens_driver/nodes/mtls",
+		"/home/amos/devel/fhwa3_ws/src/nodes/mtnode.py",
+		"/home/amos/devel/fhwa3_ws/nodes/mtnode.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"paired",
+			"getport",
+			"getPort",
+			"imu_pub",
+			"im_pub",
+			"mag_msg",
+			"pub_mag",
+			"pb_mag",
+			"gps_msg",
+			"Press",
+			"pressure_data",
+			"PVT",
+			"pvt_data",
+			"orientation data",
+			"orientation_data",
+			"orient",
+			"orient_data",
+			"mid",
+			"roll",
+			"pub_gps",
+			"**",
+			"*",
+			"**",
+			"accel_data",
+			"acceleration",
+			"RAWGPS",
+			"angular",
+			"angular_velocity",
+			"anglar_velocity",
+			"raw",
+			"gps_msg",
+			"pvt_data",
+			"gps_pub",
+			"fix",
+			"fix_ext",
+			"fix",
+			"read_meas",
+			"data.get",
+			"XDI",
+			"time",
+			"start",
+			"PVT",
+			"read_data_msg",
+			"MTData Message",
+			"XDI",
+			"waiting"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "controller-files/Class.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29658,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								304,
+								304
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 1734.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "controller-files/mainLoop.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								848,
+								848
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 561.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "controller-files/contRead.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3206,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								651,
+								651
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "controller-files/createDeviceChain.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3373,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								685,
+								685
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "controller-files/iniFiles/ControllerTwo.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 332,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								330,
+								330
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "controller-files/readWrite.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								437,
+								437
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 246.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
