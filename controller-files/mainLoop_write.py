@@ -91,13 +91,12 @@ for x in range(0,2):
 			#	write(i, device, portObj, manipulatedDic[item])
 
 			#----------------------------------------
-			#if i == 0:
-			#	print "Writing to C1 ports"
-			#	portobj = device.getPortItem(6)
-			#	print portobj
-			#	write(i, device, portobj, 0)
-			#	print "C1 write attempted"
-
+			if i == 0:
+				print "Writing to C1 ports"
+				portobj = device.getPortItem(6)
+				print portobj
+				write(i, device, portobj, 0)
+				print "C1 write attempted"
 			
 			if i == 1:
 				print "Writing to C2 ports"
