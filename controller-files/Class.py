@@ -101,6 +101,26 @@ class ControlLoop(object):
 #add deadband field
 
 
+<<<<<<< HEAD
+=======
+class ModeSwap(DigitalOutput):
+    def __init__(self, port):
+        AnalogInput.__init__(self)
+        self._portNum = port
+        self._controlled = False
+        self._name = "ModeSwap"
+    def getPortName(self):
+        return self._name
+    def getControlled(self):
+        return self._controlled
+    def getPortNum(self):
+        return self._portNum
+    def setPortNum(self, port):
+        self._portNum = port
+
+
+
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
 class TempMA(AnalogInput,ControlLoop):
    #Mix Air Temperature sensor can controll dampers 
     def __init__(self, port):
@@ -145,6 +165,10 @@ class TempPA(AnalogInput,ControlLoop):
         self._controlled = True
         self._deadband = 0.5
         self._name = "TempPA"
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
     def getPortName(self):
         return self._name
     def getControlled(self):
@@ -153,6 +177,10 @@ class TempPA(AnalogInput,ControlLoop):
         return self._portNum
     def setPortNum(self, port):
         self._portNum = port
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
     def getPValue(self):
         return self._pValue
     def setPValue(self, pValue):
@@ -172,9 +200,15 @@ class TempPA(AnalogInput,ControlLoop):
         elif outputValue > 2.5:
             outputValue = 2.5
         return outputValue
+<<<<<<< HEAD
 class TempSA(AnalogInput,ControlLoop):
     #Supply air temperature sensor controlls the cooling coil
 
+=======
+
+class TempSA(AnalogInput,ControlLoop):
+    #Supply air temperature sensor controlls the cooling coil
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
     def __init__(self, port, pairedPort):
         AnalogInput.__init__(self)
         ControlLoop.__init__(self, pairedPort)
@@ -948,6 +982,14 @@ class Device(object):
             return self._ports["portsix"]
         elif portNumber == 7:
             return self._ports["portseven"]
+<<<<<<< HEAD
+=======
+        # Virtual Ports
+        elif portNumber == 810001:
+            return self._ports["virtualport1"]
+        elif portNumber == 840001:
+            return self._ports["virtualport4"]
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
         else:
             return "Error: Port unknown"
     def setObjectName(self, name):   

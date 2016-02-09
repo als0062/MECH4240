@@ -32,7 +32,11 @@ def createChain():
         for port in portDic:
             portDic[port] = instantiatePortClass(portDic[port], portNumber(port))
         
+<<<<<<< HEAD
         #This if statement links the device objects into the linked list. I do not think the elif statement is nessacary but I did not want to remove it or change the cose befor the presentation.
+=======
+        #This if statement links the device objects into the linked list. I do not think the elif statement is nessacary but I did not want to remove it or change the code befor the presentation.
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
         if index == 0:
             deviceList = Device(deviceDic, portDic)
             counter = deviceList
@@ -53,11 +57,22 @@ def instantiatePortClass(str_className,portNum):
     if str_className.lower() == "led":
         return DamperPositionOA(portNum)
     elif str_className.lower() == "thermistorcc":
+<<<<<<< HEAD
         return TempSA(portNum, 1)
     elif str_className.lower() == "thermistorhc":
         return TempPA(portNum, 3)
     else:
         return "Error: Type not reconised"
+=======
+        # TempSA(self,pairedPort)
+        return TempSA(portNum, 1)
+    elif str_className.lower() == "thermistorhc":
+        return TempPA(portNum, 3)
+    #elif str_className.lower() == "modeswap":
+    #    return ModeSwap(portNum, )
+    else:
+        return "Error: Type not recognised"
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
     
 #   
 def portNumber(str_portNum):
@@ -79,3 +94,7 @@ def portNumber(str_portNum):
         return 8
     elif str_portNum.lower() == "portnine":
         return 9
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
