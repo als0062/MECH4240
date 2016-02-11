@@ -11,23 +11,8 @@ foreignTTL: 30
 
 [Ports]
 portOne: led
-<<<<<<< HEAD
-<<<<<<< HEAD
-portTwo: None
+portTwo: led
 portThree: None
 portFour: None
-portFive: None
-=======
-portTwo: led
-portThree: led
-portFour: led
 portFive: thermistorcc
->>>>>>> c3379f06e4fd7e0423532aa05e10b75c9f942c91
 portSix: None
-=======
-portTwo: led
-portThree: thermistorcc
-portFour: led
-portFive: thermistorcc
-portSix: led
->>>>>>> 7b9dcd6d83f69078d9a45afb87d0d4660bcaab94
